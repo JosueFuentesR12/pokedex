@@ -28,4 +28,4 @@
 .tab { padding: 0; padding-bottom: 6rem; }
 
 ul { list-style: none; padding: 0; }
-li {  }
+li { text-align: start; }

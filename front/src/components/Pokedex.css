@@ -6,7 +6,7 @@ body {
     font-family: Helvetica, sans-serif; 
 }
 
-.Pokedex { height: 100vh; width: 45%; margin: auto; background: #D3D3D1; border: 1px solid #440a0a; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; position: relative; overflow-y: auto; padding: .5rem; box-sizing: border-box; padding-top: 3rem; }
+.Pokedex { height: calc(100vh - 4rem); width: 45%; margin: auto; background: #D3D3D1; border: 1px solid #440a0a; box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3); position: relative; overflow-y: auto; padding: .5rem; box-sizing: border-box; padding-top: 3rem; border-radius: 1rem 1rem 5rem 1rem; }
 
 /* .Pokedex::before {
     content: "";
@@ -30,7 +30,7 @@ body {
 .Pokedex .Pokedex-content .Resultado {
     width: 80%;
     text-align: center;
-    border: 20px solid black;
+    border: 20px solid #464752;
     border-radius: 1rem;
     background: #A9A935;
     overflow-y: hidden;

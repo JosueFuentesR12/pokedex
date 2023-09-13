@@ -77,7 +77,9 @@ function PokemonInfo(props:PokemonInfoProps) {
                 <div className="tab">
                     <ul>
                         {props.pokemon.stats.map((stat,index)=>{
-                            return <li key={index}>{stat.stat.name}:{stat.base_stat}</li>
+                            return <li key={index}>
+                                    <strong>{stat.stat.name}</strong>: {stat.base_stat}
+                                </li>
                         })}
                     </ul>
                 </div>
