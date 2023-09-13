@@ -40,14 +40,15 @@ function Busqueda(props: BusquedaProps) {
 
     return (
         <div>
-            <div style={{ paddingTop: "40px" }}>
-                <div className="Display">
+            <div>
+                <input type="text" name='display' className='Display' value={busqueda} readOnly />
+                {/* <div className="Display">
                     {error ? (
                         <h2>Error al buscar Pokémon</h2>
                     ) : (
                         <h2>{busqueda}</h2>
                     )}
-                </div>
+                </div> */}
             </div>
             <div>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>

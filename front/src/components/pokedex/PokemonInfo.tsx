@@ -17,6 +17,7 @@ function CustomTabPanel(props: TabPanelProps) {
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
+            className="tabpanel"
             {...other}
         >
             {value === index && (
@@ -37,20 +38,25 @@ function PokemonInfo(props:PokemonInfoProps) {
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
-    return (
-        <div>
+    return <>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', textAlign: 'center', overflow: 'auto', position: 'absolute', bottom: 0, left: "50%", transform: "translateX(-50%)", background: "#A9A935", borderTop: "1px solid #000000e0" }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                <Tab label="Image" />
+                <Tab label="Type" />
+                <Tab label="Abilities" />
+                <Tab label="Stats" />
+                <Tab label="Moves" />
+            </Tabs>
+        </Box>
+        <div style={{height: "100%"}}>
             <h1 className="Name">{props.pokemon.name}</h1>
-            <img className="Image" src={props.pokemon.sprites.other["official-artwork"].front_default}></img>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab style={{color:"white"}} label="Type" />
-                    <Tab style={{color:"white"}} label="Abilities" />
-                    <Tab style={{color:"white"}} label="Stats" />
-                    <Tab style={{color:"white"}} label="Moves" />
-                </Tabs>
-            </Box>
             <CustomTabPanel value={value} index={0}>
-                <div style={{color:"white"}}>
+                <div className="tab">
+                    <img className="Image" src={props.pokemon.sprites.other["official-artwork"].front_default} />
+                </div>
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+                <div className="tab">
                     <ul>
                         {props.pokemon.types.map((type,index)=>{
                             return <li key={index}>{type.type.name}</li>
@@ -58,8 +64,8 @@ function PokemonInfo(props:PokemonInfoProps) {
                     </ul>
                 </div>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-                <div style={{color:"white"}}>
+            <CustomTabPanel value={value} index={2}>
+                <div className="tab">
                     <ul>
                         {props.pokemon.abilities.map((ability,index)=>{
                             return <li key={index}>{ability.ability.name}</li>
@@ -67,8 +73,8 @@ function PokemonInfo(props:PokemonInfoProps) {
                     </ul>
                 </div>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-                <div style={{color:"white"}}>
+            <CustomTabPanel value={value} index={3}>
+                <div className="tab">
                     <ul>
                         {props.pokemon.stats.map((stat,index)=>{
                             return <li key={index}>{stat.stat.name}:{stat.base_stat}</li>
@@ -76,8 +82,8 @@ function PokemonInfo(props:PokemonInfoProps) {
                     </ul>
                 </div>
             </CustomTabPanel>
-            <CustomTabPanel value={value} index={3}>
-                <div style={{color:"white"}}>
+            <CustomTabPanel value={value} index={4}>
+                <div className="tab">
                     <ul>
                         {props.pokemon.moves.map((move,index)=>{
                             return <li key={index}>{move.move.name}</li>
@@ -86,7 +92,7 @@ function PokemonInfo(props:PokemonInfoProps) {
                 </div>
             </CustomTabPanel>
         </div>
-    )
+    </>;
 }
 
 export default PokemonInfo;

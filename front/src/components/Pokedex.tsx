@@ -7,17 +7,19 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Pokedex() {
-    const columnSize = 6;
+    const columnSize = 12;
     const [pokemonId,setPokemonId]=useState(0);
     const [pokemon,setPokemon]=useState<Pokemon|null>(null);
     function selectPokemonId(id:number){
         setPokemonId(id);
     }
 
-    function getPokemon(){
+    function getPokemon() {
         axios.get("https://pokeapi.co/api/v2/pokemon/"+pokemonId).then((response)=>{
-            setPokemon(response.data)
-        })
+            setPokemon(response.data);
+        }).catch(() => {
+            setPokemon(null);
+        });
     }
     
 
@@ -27,18 +29,16 @@ function Pokedex() {
 
 
     return (
-        <div className="Pokedex">
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                <Grid item xs={columnSize} className="Busqueda">
-                    <Busqueda searchPokemon={getPokemon} changePokemonId={selectPokemonId}></Busqueda>
-                </Grid>
+        <section className="Pokedex">
+            <Grid className="Pokedex-content" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={columnSize} className="Resultado">
-                    {pokemon&&
-                        <PokemonInfo pokemon={pokemon}></PokemonInfo>
-                    }
+                    {pokemon && <PokemonInfo pokemon={pokemon} />}
+                </Grid>
+                <Grid item xs={columnSize} className="Busqueda">
+                    <Busqueda searchPokemon={getPokemon} changePokemonId={selectPokemonId} />
                 </Grid>
             </Grid>
-        </div>
+        </section>
     );
 
 }
