@@ -41,7 +41,7 @@ function Busqueda(props: BusquedaProps) {
     return (
         <div>
             <div>
-                <input type="text" name='display' className='Display' value={busqueda} readOnly />
+                <input type="number" name='display' className='Display' value={busqueda} onChange={(e) => setBusqueda(e.target.value)}/>
                 {/* <div className="Display">
                     {error ? (
                         <h2>Error al buscar Pokémon</h2>
